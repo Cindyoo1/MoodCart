@@ -1,26 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 
+import Home from './pages/Home';
+import Transactions from './pages/Transactions';
+import Analytics from './pages/Analytics';
+import Account from './pages/Account';
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div style={{ backgroundColor: '#82CF91', minHeight: '100vh', color: 'white' }}>
+    <Router>
+      <div style={{ backgroundColor: '#82CF91', minHeight: '100vh', color: 'white' }}>
 
-      <NavBar />
+        <NavBar />
 
-      <div style={{ padding: '40px', fontFamily: 'sans-serif', textAlign: 'center', color: 'black' }}>
-        <h1>MoodCart</h1>
-        <p>A reflective spending awareness app</p>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/account" element={<Account />} />
+        </Routes>
+
       </div>
-
-
-    </div>
-  )
+    </Router>
+  );
 }
 
 export default App
